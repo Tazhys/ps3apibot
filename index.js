@@ -19,7 +19,7 @@ client.utils = {
 client.commands = new Collection();
 
 client.pkg = {
-    fetch: require("node-fetch"),
+    fetch: require("cross-fetch"), // using cross-fetch instead of node-fetch because node-fetch lacks support for commonjs implementations in later versions.
 }
 
 setTimeout(() => {
