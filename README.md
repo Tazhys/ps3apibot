@@ -7,4 +7,5 @@
 - CBH (Yes)
 
 # Contributors
+- @Tazhys
 - @thewhistledev
