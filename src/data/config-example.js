@@ -12,6 +12,6 @@ module.exports = {
             loadslot2: "/vshplugin.ps3mapi?prx=%2Fdev_hdd0%2Fplugins%2FValiant.sprx&load_slot=2",
             notify: "/notify.ps3mapi?msg="
         },
-        host: "http://192.168.00.00"
+        host: "http://192.168.x.x" //replace x.x with the end of your PS3's internal IP
     }
 }

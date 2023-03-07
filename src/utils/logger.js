@@ -2,30 +2,17 @@ const colors = require("colors");
 
 module.exports = function(logMessage, type = "info") {
 
-    let logString;
-    let logFormatting;
-
-    switch (type) {
-        case "system":
-            logString = colors.white(logMessage)
-            logFormatting = colors.bgMagenta(colors.white(colors.bold("[SYSTEM]")));
-            break;
-        case "command":
-            logString = colors.white(logMessage)
-            logFormatting = colors.bgMagenta(colors.white(colors.bold("[SYSTEM]"))) + " " + colors.bgGreen(colors.white(colors.bold("[COMMAND]")));
-            break;
-        case "module":
-            logString = colors.white(logMessage)
-            logFormatting = colors.bgMagenta(colors.white(colors.bold("[SYSTEM]"))) + " " + colors.bgGreen(colors.white(colors.bold("[MODULE]")));
-            break;
-        case "error":
-            logString = colors.white(logMessage)
-            logFormatting = colors.bgMagenta(colors.white(colors.bold("[SYSTEM]"))) + " " + colors.bgRed(colors.white(colors.bold("[ERROR]")));
-            break;
-        case "warn":
-            logString = colors.white(logMessage)
-            logFormatting = colors.bgMagenta(colors.white(colors.bold("[SYSTEM]"))) + " " + colors.bgYellow(colors.white(colors.bold("[WARN]")));
-            break;
+    const typeFormatting = { // Formatting for each type of log.
+        system: colors.bgMagenta.white.bold("[SYSTEM]"),
+        command: `${colors.bgMagenta.white.bold("[SYSTEM]")} ${colors.bgGreen.white.bold("[COMMAND]")}`, // Command message.
+        module: `${colors.bgMagenta.white.bold("[SYSTEM]")} ${colors.bgGreen.white.bold("[MODULE]")}`, // Module message.
+        error: `${colors.bgMagenta.white.bold("[SYSTEM]")} ${colors.bgRed.white.bold("[ERROR]")}`, // ERROR message.
+        warn: `${colors.bgMagenta.white.bold("[SYSTEM]")} ${colors.bgYellow.white.bold("[WARN]")}`, // WARN message.
+        info: `${colors.bgMagenta.white.bold("[SYSTEM]")} ${colors.bgBlue.white.bold("[INFO]")}` // INFO message.
     }
-    console.log(logFormatting, logString);
-}
+
+    const logString = colors.white(logMessage); // Formatting for the log message.
+    const logFormatting = typeFormatting[type]; // Formatting for the log type.
+
+    console.log(logFormatting, logString); // Log the message.
+} // More optimised code.
