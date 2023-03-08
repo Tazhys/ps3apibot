@@ -1,3 +1,5 @@
+const config = require("../data/config");
+
 module.exports = {
     name: 'messageCreate',
     once: false,
@@ -11,6 +13,7 @@ module.exports = {
             client.commands.find(cmd => cmd.aliases && cmd.aliases.includes(commandName))
 
         if (!command) return
+        if(config.whitelist.enabled && !config.whitelist.users.includes(message.author.id)) return client.utils.errorEmbed(`You are not whitelisted to use this bot.`, message.channel, messageAuthor = message.author); // Whitelist check for commands
 
         try {
             command.execute(message, args, client)

@@ -1,6 +1,11 @@
 module.exports = {
     token: "DISCORD_BOT_TOKEN",
 
+    whitelist: { //Decide who can use the bot. If you want to allow everyone, set enabled to false. (Default: false)
+        enabled: false,
+        users: ["USER_ID"]
+    },
+
     settings: {
         prefix: "BOT_PREFIX",
         name: "BOT_NAME"
