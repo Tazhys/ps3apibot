@@ -1,4 +1,5 @@
 const { Client, GatewayIntentBits, Collection } = require("discord.js");
+const preventCrash = require("./src/lib/handler");
 const client = new Client({
     intents: [
         GatewayIntentBits.MessageContent,
@@ -7,6 +8,8 @@ const client = new Client({
         GatewayIntentBits.Guilds,
     ]
 });
+
+preventCrash; // Prevents the app from hanging when an error occurs. (Usually node just crashes and you have to restart the app, this prevents that and continues the script.)
 
 client.config = require("./src/data/config.js");
 client.utils = {
@@ -27,4 +30,6 @@ setTimeout(() => {
     require("./src/handlers/events")(client);
 }, 1000);
 
-client.login(client.config.token)
+client.login(client.config.token).catch((e) => {
+    client.utils.logger(e, "error");
+});
