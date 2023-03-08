@@ -1,4 +1,4 @@
-const fetch = require("node-fetch");
+const fetch = require('cross-fetch');
 const config = require("../data/config");
 
 async function CCAPINotify(message) {
