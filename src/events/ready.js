@@ -6,6 +6,6 @@ module.exports = {
     execute(client) {
         Object.values(client.utils.console).forEach(line => console.log(line));
         client.user.setPresence({ activities: [{ name: 'with mapi api', type: ActivityType.Playing }] })
-        client.utils.logger(`${client.config.settings.name} is now online and ready to manage PS3`, "system");
+        client.utils.logger(`${client.config.settings.name} is now online and ready to manage your PS3`, "system");
     }
 }
